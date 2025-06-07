@@ -18,7 +18,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Load your ML model
 model  = load_model('rice.h5')
-CLASS_NAMES = ['Disease1', 'Disease2', 'Healthy']  # Update with your classes
+CLASS_NAMES = ['Bacterial leaf blight','Brown Spot','Leaf smut', 'Healthy']  # Update with your classes
 
 @app.route('/')
 def start_page():
