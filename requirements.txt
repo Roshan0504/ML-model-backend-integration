@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Flask==3.0.3
 tensorflow==2.19.0
 numpy==2.1.3
@@ -8,13 +7,3 @@ scikit-learn==1.6.1
 pandas==2.2.3
 gunicorn==23.0.0
 
-=======
-Flask                   3.0.3
-tensorflow              2.19.0
-numpy                   2.1.3
-pillow                  11.2.1
-Werkzeug                3.1.3
-scikit-learn            1.6.1
-pandas                  2.2.3
-gunicorn                23.0.0
->>>>>>> 296a053b5f37b722afa1d59dd007503110911afd
