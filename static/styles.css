@@ -4,13 +4,16 @@ body {
     margin: 0;
     padding: 0;
     color: #333;
+    background: url("./images/background2.jpg") no-repeat center center fixed;
+    background-size: cover;
 }
 
 .page-container {
     max-width: 800px;
     margin: 50px auto;
     padding: 30px;
-    background: white;
+    /*background: white;*/
+    background: rgb(241, 243, 244);
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -34,7 +37,7 @@ h1 {
 }
 
 .nav-button:hover {
-    background: #45a049;
+    background: #49bd4f;
 }
 
 .file-upload {
@@ -56,6 +59,12 @@ h1 {
 
 .file-upload label:hover {
     background: #d0d0d0;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin: 15px 0;
 }
 
 .result-box {
