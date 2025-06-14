@@ -1,27 +1,4 @@
-myenv/
 .vscode/
-# Ignore Python cache and environments
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.db
-*.sqlite3
 
-# Ignore virtual environments
-.venv/
-venv/
-env/
-ENV/
-
-# Ignore Git and OS files
-.git/
-.DS_Store
-Thumbs.db
-
-# Ignore large folders not needed for deployment
-node_modules/
-tests/
-docs/
-*.log
+myenv/
 
