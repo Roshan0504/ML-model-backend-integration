@@ -2,4 +2,4 @@
 
 runtime: python310
 
-entrypoint: gunicorn -b :$PORT main:app
+entrypoint: gunicorn main:app
