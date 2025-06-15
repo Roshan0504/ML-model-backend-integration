@@ -3,3 +3,12 @@
 runtime: python310
 
 entrypoint: gunicorn main:app
+
+instance_class: F1
+
+handlers:
+- url: /static
+  static_dir: static
+
+- url: /.*
+  script: auto
