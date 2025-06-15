@@ -17,8 +17,14 @@ UPLOAD_FOLDER = 'static/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+
 # Load your ML model
-model  = load_model('rice.h5')
+# model  = load_model('rice.h5')
+
+gcs_model_path = 'gs://rice_bucket_model/rice.h5'  # Replace with your actual bucket name and path
+model = tf.keras.models.load_model(gcs_model_path)
+
 CLASS_NAMES = ['Bacterial leaf blight','Brown Spot','Leaf smut', 'Healthy']  # Update with your classes
 
 @app.route('/')
@@ -62,6 +68,5 @@ def predict_page():
     
     return redirect(url_for('upload_page'))
 
-os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
     
