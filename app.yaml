@@ -1,14 +1,17 @@
-# runtime: python311
-
 runtime: python310
-
-entrypoint: gunicorn main:app
+service: default  # explicitly specify service
+entrypoint: gunicorn -b :$PORT main:app  # explicit port binding
 
 instance_class: F1
+
+env_variables:
+  PYTHONUNBUFFERED: 1
 
 handlers:
 - url: /static
   static_dir: static
+  secure: always
 
 - url: /.*
   script: auto
+  secure: always

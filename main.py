@@ -10,6 +10,8 @@ import numpy as np
 
 import tensorflow as tf
 
+from google.cloud import storage
+
 app = Flask(__name__)
 
 # Configuration
@@ -22,8 +24,22 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 # Load your ML model
 # model  = load_model('rice.h5')
 
-gcs_model_path = 'gs://rice_bucket_model/rice.h5'  # Replace with your actual bucket name and path
-model = tf.keras.models.load_model(gcs_model_path)
+
+def download_model_from_gcs(bucket_name, blob_name, destination_file_name):
+    if not os.path.exists(destination_file_name):
+        storage_client = storage.Client()
+        bucket = storage_client.bucket(bucket_name)
+        blob = bucket.blob(blob_name)
+        blob.download_to_filename(destination_file_name)
+        print(f"Downloaded model from GCS: {destination_file_name}")
+    else:
+        print("Model already exists locally.")
+
+
+download_model_from_gcs('rice_bucket_model','rice.h5','rice.h5'   )
+model = tf.keras.models.load_model('rice.h5')
+#gcs_model_path = 'gs://rice_bucket_model/rice.h5' 
+#model = tf.keras.models.load_model(gcs_model_path)
 
 CLASS_NAMES = ['Bacterial leaf blight','Brown Spot','Leaf smut', 'Healthy']  # Update with your classes
 
