@@ -11,6 +11,7 @@ import numpy as np
 import tensorflow as tf
 
 from google.cloud import storage
+storage_client = storage.Client()
 
 app = Flask(__name__)
 
@@ -36,7 +37,7 @@ def download_model_from_gcs(bucket_name, blob_name, destination_file_name):
         print("Model already exists locally.")
 
 
-download_model_from_gcs('rice_bucket_model','rice.h5','rice.h5'   )
+download_model_from_gcs('rice_bucket_model','rice.h5','/tmp/rice.h5'   )
 model = tf.keras.models.load_model('rice.h5')
 #gcs_model_path = 'gs://rice_bucket_model/rice.h5' 
 #model = tf.keras.models.load_model(gcs_model_path)
